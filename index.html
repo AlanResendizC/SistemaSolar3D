@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador Interactivo del Sistema Solar 3D</title>
+    <link rel="stylesheet" href="styles/hud.css">
+</head>
+<body>
+    <!-- Panel de control principal -->
+    <aside id="hud-panel" class="glass-panel">
+        <h1>Sistema Solar 3D</h1>
+        <p class="subtitle">WebGL / Three.js</p>
+
+        <div class="control-group">
+            <button id="btn-play" type="button">Pausar</button>
+            <button id="btn-reset" type="button">Vista General</button>
+        </div>
+
+        <div class="control-group">
+            <label for="speed-slider">Velocidad orbital: <span id="speed-value">1.0x</span></label>
+            <input id="speed-slider" type="range" min="0" max="4" step="0.1" value="1">
+        </div>
+
+        <div class="control-group">
+            <label for="planet-select">Enfocar cuerpo celeste:</label>
+            <select id="planet-select">
+                <option value="">-- Libre (Sistema completo) --</option>
+                <option value="sol">Sol</option>
+                <option value="mercurio">Mercurio</option>
+                <option value="venus">Venus</option>
+                <option value="tierra">Tierra</option>
+                <option value="luna">Luna</option>
+                <option value="marte">Marte</option>
+                <option value="jupiter">Júpiter</option>
+                <option value="saturno">Saturno</option>
+                <option value="urano">Urano</option>
+                <option value="neptuno">Neptuno</option>
+            </select>
+        </div>
+
+        <div class="checkbox-group">
+            <label><input id="toggle-orbits" type="checkbox" checked> Mostrar órbitas</label>
+            <label><input id="toggle-asteroids" type="checkbox" checked> Cinturón de asteroides</label>
+        </div>
+    </aside>
+
+    <!-- Tarjeta de información (se activa con Raycasting al hacer clic en un astro) -->
+    <section id="info-card" class="glass-panel hidden">
+        <div class="info-header">
+            <h2 id="info-name">Planeta</h2>
+            <button id="btn-close-info" type="button" title="Cerrar">✕</button>
+        </div>
+        <p class="info-badge" id="info-type"></p>
+        <ul class="info-specs">
+            <li><strong>Diámetro ecuatorial:</strong> <span id="info-diameter"></span></li>
+            <li><strong>Distancia al Sol:</strong> <span id="info-distance"></span></li>
+            <li><strong>Periodo orbital:</strong> <span id="info-period"></span></li>
+        </ul>
+        <p id="info-desc" class="info-desc"></p>
+    </section>
+
+    <!-- Telemetría de rendimiento (útil para capturas y sección de pruebas) -->
+    <footer id="telemetry-panel" class="glass-panel">
+        <span>FPS: <strong id="stat-fps">60</strong></span>
+        <span>Draw Calls: <strong id="stat-calls">0</strong></span>
+        <span>Triángulos: <strong id="stat-tris">0</strong></span>
+    </footer>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>
