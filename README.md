@@ -14,5 +14,28 @@ Simulación tridimensional interactiva del sistema solar desarrollada con WebGL 
 
 ## Instrucciones de Instalación
 1. Clonar el repositorio:
+
    ```bash
-  git clone [https://github.com/AlanResendizC/SistemaSolar3D.git](https://github.com/AlanResendizC/SistemaSolar3D.git)
+   git clone https://github.com/AlanResendizC/SistemaSolar3D.git
+   ```
+
+2. Entrar a la carpeta del proyecto:
+
+   ```bash
+   cd SistemaSolar3D
+   ```
+
+*(No requiere instalación de dependencias con npm, ya que Three.js se carga mediante Import Map desde CDN).*
+
+## Instrucciones de Ejecución
+Debido a las políticas de seguridad CORS de los navegadores para módulos ES6 y texturas locales, el proyecto debe ejecutarse en un servidor HTTP local:
+
+* **Opción A (Visual Studio Code - Live Server):** Abrir la carpeta en VS Code, dar clic derecho sobre `index.html` y seleccionar **Open with Live Server**.
+* **Opción B (Python):** Ejecutar en la terminal dentro de la carpeta raíz y abrir `http://localhost:5500`:
+
+  ```bash
+  python -m http.server 5500
+  ```
+## Atribución de Recursos
+* Motor gráfico: [Three.js](https://threejs.org/) (Licencia MIT).
+* Mapas de texturas planetarias: Recursos de dominio público de la NASA / Solar System Scope.
